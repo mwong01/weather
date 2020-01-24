@@ -1,6 +1,6 @@
 import React from "react";
 
-const Weather = ({ description, city, country, error, temperature }) => {
+const Weather = ({ description, city, country, error, temperature, feels_like }) => {
   return (
     <div>
       {city && country && (
@@ -8,7 +8,8 @@ const Weather = ({ description, city, country, error, temperature }) => {
           {city}, {country}
         </p>
       )}
-      {temperature && <p>{temperature}°C</p>}
+      {temperature && <p>Current temperature: {temperature}°C</p>}
+      {feels_like && <p><i>Feels like: {feels_like}°C</i></p>}
       {description && <p> Current conditions: {description}</p>}
       {error && <p>{error}</p>}
     </div>

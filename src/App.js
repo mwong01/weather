@@ -23,6 +23,7 @@ function App() {
         country: apiData.sys.country,
         description: apiData.weather[0].description,
         temperature: Math.round(apiData.main.temp - 273.15),
+        feels_like: Math.round(apiData.main.feels_like - 273.15),
         error: ""
       });
     } else {
@@ -32,6 +33,7 @@ function App() {
         country: "",
         description: "",
         temperature: "",
+        feels_like: "",
         error: alert("Please enter a City and Country!")
       });
     }
@@ -46,6 +48,7 @@ function App() {
         country={weather.country}
         description={weather.description}
         temperature={weather.temperature}
+        feels_like={weather.feels_like}
         error={weather.error}
       />
       {console.log("aaaa", weather.data)}
