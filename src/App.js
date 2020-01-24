@@ -16,26 +16,25 @@ function App() {
     )
       .then(res => res.json())
       .then(data => data);
-      if(city && country ) {
-        setWeather({
-          data: apiData,
-          city: apiData.city,
-          country: apiData.sys.country,
-          description: apiData.weather[0].description,
-          temperature: apiData.main.temp,
-          error: ""
-        });
-
-      } else {
-        setWeather({
-          data: '',
-          city: '',
-          country: '',
-          description: '',
-          temperature: '',
-          error: "Please enter a City and Country!"
-        })
-      }
+    if (city && country) {
+      setWeather({
+        data: apiData,
+        city: apiData.city,
+        country: apiData.sys.country,
+        description: apiData.weather[0].description,
+        temperature: Math.round(apiData.main.temp - 273.15),
+        error: ""
+      });
+    } else {
+      setWeather({
+        data: "",
+        city: "",
+        country: "",
+        description: "",
+        temperature: "",
+        error: alert("Please enter a City and Country!")
+      });
+    }
   }
 
   return (
@@ -43,11 +42,11 @@ function App() {
       <h3>weather app!</h3>
       <Form getWeather={fetchData} />
       <Weather
-      city={weather.city}
-      country={weather.country}
-      description={weather.description}
-      temperature={weather.temperature}
-      error={weather.error}
+        city={weather.city}
+        country={weather.country}
+        description={weather.description}
+        temperature={weather.temperature}
+        error={weather.error}
       />
       {console.log("aaaa", weather.data)}
     </div>
